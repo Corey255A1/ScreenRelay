@@ -56,11 +56,14 @@ namespace ScreenRelay
             {
                 ScreenFinder.GetMonitors().ForEach(screen => { screen.UpdateImage(); _screens.Add(screen); });
             }
-            catch(Exception e)
+            catch
             {
                 Console.WriteLine("WTF");
             }
-            SelectedScreen = _screens[0];
+            if (_screens.Count > 0)
+            {
+                SelectedScreen = _screens[0];
+            }
 
 
             _dispatcher_timer = new DispatcherTimer();

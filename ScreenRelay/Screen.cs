@@ -50,6 +50,21 @@ namespace ScreenRelay
 
         public int Height => _bottom - _top;
 
+
+        private double _scaleX = 1.0;
+        public double ScaleX
+        {
+            get { return _scaleX; }
+            set { _scaleX = value; Notify(); }
+        }
+
+        private double _scaleY = 1.0;
+        public double ScaleY
+        {
+            get { return _scaleY; }
+            set { _scaleY = value; Notify(); }
+        }
+
         private BitmapImage _image;
 
         public BitmapImage Image
@@ -64,6 +79,20 @@ namespace ScreenRelay
             _top = rect.top;
             _right = rect.right;
             _bottom = rect.bottom;
+        }
+
+        public Screen(int left, int top, int width, int height)
+        {
+            _left = left;
+            _top = top;
+            _right = left + width;
+            _bottom = top + height;
+        }
+
+        public void SetScale(int width, int height)
+        {
+            ScaleX = (double)Width / (double)width;
+            ScaleY = (double)Height / (double)height;
         }
 
         public void UpdateImage()
