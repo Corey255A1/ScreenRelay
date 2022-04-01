@@ -6,9 +6,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace ScreenRelay
 {
@@ -135,7 +135,7 @@ namespace ScreenRelay
 
 
     public delegate bool MONITORENUMPROC(IntPtr hMonitor, IntPtr hdc, ref RECT rect, int lParam);
-    
+
     public class ScreenFinder
     {
 
@@ -191,7 +191,7 @@ namespace ScreenRelay
             try
             {
                 //Enumerate the Displays to get the actual Resolution and offset
-                while(EnumDisplayDevices(null, i,  ref dd, 0))
+                while (EnumDisplayDevices(null, i, ref dd, 0))
                 {
                     if (EnumDisplaySettings(dd.DeviceName, ENUM_CURRENT_SETTINGS, ref dm))
                     {
@@ -244,11 +244,11 @@ namespace ScreenRelay
                 var mouse = GetMousePosition();
                 graphics_mem.DrawIcon(new Icon("Cursor.ico"), (int)((mouse.X - left) * scaleX), (int)((mouse.Y - top) * scaleY));
             }
-            
+
             var mem = new MemoryStream();
             bitmap.Save(mem, System.Drawing.Imaging.ImageFormat.Bmp);
             mem.Position = 0;
-            return mem;           
+            return mem;
 
         }
     }

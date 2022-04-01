@@ -4,16 +4,16 @@
 
 
 using System.ComponentModel;
-using System.Windows.Media.Imaging;
-using System.Runtime.CompilerServices;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Windows.Media.Imaging;
 
 namespace ScreenRelay
 {
     public class Screen : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private void Notify([CallerMemberName]string name = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        private void Notify([CallerMemberName] string name = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
 
 

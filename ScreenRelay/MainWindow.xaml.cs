@@ -3,11 +3,11 @@
 //Display Monitor Thumbnails and Update a realtime Image of the selected monitor
 
 using System;
-using System.Windows;
 using System.Collections.ObjectModel;
-using System.Windows.Threading;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace ScreenRelay
 {
@@ -17,7 +17,7 @@ namespace ScreenRelay
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private void Notify([CallerMemberName]string name = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        private void Notify([CallerMemberName] string name = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         private ObservableCollection<Screen> _screens;
 
@@ -39,7 +39,7 @@ namespace ScreenRelay
         public bool ScreenListViewHidden
         {
             get => _screen_listview_hidden;
-            set{ _screen_listview_hidden = value; Notify(); Notify(nameof(ScreenListViewHiddenStr)); }
+            set { _screen_listview_hidden = value; Notify(); Notify(nameof(ScreenListViewHiddenStr)); }
         }
 
         public string ScreenListViewHiddenStr => _screen_listview_hidden ? "Show" : "Collapse";
@@ -58,7 +58,7 @@ namespace ScreenRelay
             }
             catch
             {
-                Console.WriteLine("WTF");
+                Console.WriteLine("An Error Occurred determining the list of monitors");
             }
             if (_screens.Count > 0)
             {
